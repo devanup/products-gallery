@@ -1,6 +1,6 @@
 # Products Gallery - FakeStore API Integration
 
-A production-grade Next.js application showcasing a filterable products gallery with elegant UI and comprehensive testing.
+A simple Next.js application showcasing a filterable products gallery with elegant UI and comprehensive testing.
 
 ## Features
 
@@ -24,12 +24,12 @@ A production-grade Next.js application showcasing a filterable products gallery 
   - Skeleton loading states
   - Error states with retry functionality
 
-- **Accessibility**
+<!-- - **Accessibility**
   - Keyboard navigation support
   - WCAG AA color contrast
   - Proper ARIA labels and roles
   - Focus management in modal/drawer
-  - ESC key to close drawer
+  - ESC key to close drawer -->
 
 - **Production Quality**
   - TypeScript with strict mode
@@ -38,7 +38,7 @@ A production-grade Next.js application showcasing a filterable products gallery 
   - Comprehensive unit tests (Vitest)
   - E2E tests (Playwright)
   - Pre-commit hooks (Husky + lint-staged)
-  - CI/CD ready (GitHub Actions)
+  <!-- - CI/CD ready (GitHub Actions) -->
 
 ## Tech Stack
 
@@ -50,7 +50,7 @@ A production-grade Next.js application showcasing a filterable products gallery 
 - **Testing**: Vitest (unit) + Playwright (e2e)
 - **Code Quality**: ESLint, Prettier, Husky
 
-## Project Structure
+<!-- ## Project Structure
 
 ```
 /app
@@ -84,7 +84,7 @@ A production-grade Next.js application showcasing a filterable products gallery 
   utils.test.ts              # Unit tests for utils
   /e2e
     products.spec.ts         # Playwright e2e tests
-```
+``` -->
 
 ## Getting Started
 
@@ -158,6 +158,7 @@ This app uses the [FakeStore API](https://fakestoreapi.com/):
 - `GET /products/category/{name}` - Products by category
 
 Data is fetched client-side via React Query with:
+
 - Automatic caching (5 min stale time)
 - Retry logic (2 attempts)
 - Optimistic UI updates
@@ -178,12 +179,12 @@ Data is fetched client-side via React Query with:
 3. **Lazy Image Loading**: Images load progressively with proper sizing
 4. **Code Splitting**: Automatic route-based splitting via Next.js
 
-### Accessibility
+<!-- ### Accessibility
 
 1. **Keyboard Navigation**: All controls accessible via keyboard
 2. **Focus Trapping**: Drawer captures focus and returns to trigger on close
 3. **ARIA Labels**: Proper labeling for screen readers
-4. **Color Contrast**: WCAG AA compliant
+4. **Color Contrast**: WCAG AA compliant -->
 
 ### Testing Strategy
 
@@ -192,7 +193,7 @@ Data is fetched client-side via React Query with:
 3. **Pre-commit Hooks**: Enforce quality before commits
 4. **CI Pipeline**: Automated testing on push/PR
 
-## CI/CD
+<!-- ## CI/CD
 
 GitHub Actions workflow runs on push/PR:
 
@@ -202,32 +203,25 @@ GitHub Actions workflow runs on push/PR:
 4. Unit tests
 5. Build
 
-See `.github/workflows/ci.yml` for configuration.
+See `.github/workflows/ci.yml` for configuration. -->
 
-## Browser Support
+<!-- ## Browser Support
 
 - Chrome/Edge (latest)
 - Firefox (latest)
 - Safari (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
+- Mobile browsers (iOS Safari, Chrome Mobile) -->
 
-## Future Enhancements
+<!-- ## Future Enhancements
 
-- [ ] Add product detail pages
-- [ ] Implement wishlist functionality
-- [ ] Add shopping cart
-- [ ] Dark mode toggle
-- [ ] Advanced filters (brand, stock status)
-- [ ] Pagination instead of "Load More"
-- [ ] Product comparison feature
-- [ ] Server-side rendering with ISR
+- [ ]  -->
 
-## License
+<!-- ## License
 
-MIT
+MIT -->
 
-## Acknowledgments
+<!-- ## Acknowledgments
 
 - [FakeStore API](https://fakestoreapi.com/) for product data
 - [shadcn/ui](https://ui.shadcn.com/) for UI components
-- [TailwindCSS](https://tailwindcss.com/) for styling
+- [TailwindCSS](https://tailwindcss.com/) for styling -->
