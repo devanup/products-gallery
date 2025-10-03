@@ -7,6 +7,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { CategoryCount } from '@/lib/types';
 import { formatPrice } from '@/lib/utils';
 import { cn } from '@/lib/utils';
+import { useState, useEffect } from 'react';
 
 interface SidebarFiltersProps {
   categories: CategoryCount[];
@@ -35,11 +36,38 @@ export function SidebarFilters({
   onClearAll,
   className,
 }: SidebarFiltersProps) {
+  // Local state for immediate slider updates
+  const [localMinPrice, setLocalMinPrice] = useState(minPrice);
+  const [localMaxPrice, setLocalMaxPrice] = useState(maxPrice);
+
+  // Update local state when props change (e.g., when filters are cleared)
+  useEffect(() => {
+    setLocalMinPrice(minPrice);
+    setLocalMaxPrice(maxPrice);
+  }, [minPrice, maxPrice]);
+
+  // Debounced effect to update actual filters
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      // Only update if the local values are different from the current filter values
+      if (localMinPrice !== minPrice || localMaxPrice !== maxPrice) {
+        onPriceChange(localMinPrice, localMaxPrice);
+      }
+    }, 1000); // 1 second delay
+
+    return () => clearTimeout(timeoutId);
+  }, [localMinPrice, localMaxPrice, minPrice, maxPrice, onPriceChange]);
+
   const hasActiveFilters =
     selectedCategory ||
     minPrice > priceRange.min ||
     maxPrice < priceRange.max ||
     minRating > 0;
+
+  const handleSliderChange = (min: number, max: number) => {
+    setLocalMinPrice(min);
+    setLocalMaxPrice(max);
+  };
 
   return (
     <div className={cn('space-y-6', className)}>
@@ -90,8 +118,8 @@ export function SidebarFilters({
             <DualRangeSlider
               label={(value) => formatPrice(value)}
               labelPosition="top"
-              value={[minPrice, maxPrice]}
-              onValueChange={([min, max]) => onPriceChange(min, max)}
+              value={[localMinPrice, localMaxPrice]}
+              onValueChange={([min, max]) => handleSliderChange(min, max)}
               min={priceRange.min}
               max={priceRange.max}
               step={1}
